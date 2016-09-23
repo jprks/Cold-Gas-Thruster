@@ -90,9 +90,9 @@ Propellant_Mass = Initial_Mass - Final_Mass;
 
 System_Velocity = g0*Isp*log(Mass_Ratio);
 
-Cf = Exit_Velocity/Char_Velocity+(Exit_Area/Throat_Area)*(Exit_Pressure/Chamber_Pressure);
+% Cf = Exit_Velocity/Char_Velocity+(Exit_Area/Throat_Area)*(Exit_Pressure/Chamber_Pressure);
 
-F = Throat_Area*Chamber_Pressure*Cf;
+F = Mass_Flow*Exit_Velocity + Exit_Pressure*Exit_Area;
 
 Burn = (Propellant_Mass*System_Velocity)/F;
 
@@ -101,14 +101,14 @@ Tank_Radius = (3*m_prop*R0*Chamber_Temperature/(4*pi()*Chamber_Pressure*Molar_Ma
 % 
 % rowinc = 1;
 
-% Assigned_Tank_Radius = 0.025;
+Assigned_Tank_Radius = 0.025;
 % Assigned_Prop_Mass = 0.01;
-% for m_prop = 0.01:0.05:1
-%     Calculated_Chamber_Pressure = 3*m_prop*R0*Chamber_Temperature/(4*pi()*Molar_Mass*Assigned_Tank_Radius^3);
-%     Optimal_Prop_Mass(rowinc,1) = Calculated_Chamber_Pressure;
-%     Optimal_Prop_Mass(rowinc,2) = m_prop;
-%     rowinc = rowinc + 1;
-% end
+for m_prop = 0.01:0.05:1
+    Calculated_Chamber_Pressure = 3*m_prop*R0*Chamber_Temperature/(4*pi*Molar_Mass*Assigned_Tank_Radius^3);
+    Optimal_Prop_Mass(rowinc,1) = Calculated_Chamber_Pressure;
+    Optimal_Prop_Mass(rowinc,2) = m_prop;
+    rowinc = rowinc + 1;
+end
 % 
 % rowinc = 1;
 % 
