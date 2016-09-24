@@ -122,7 +122,7 @@ Tank_Radius = (3*Molar_Mass*R0*Chamber_Temperature/(4*pi()*Chamber_Pressure*Prop
 
 % % Assigned_Prop_Mass = 0.01;
 % for m_prop = 0.01:0.05:1
-    Calculated_Chamber_Pressure = 3*Molar_Mass*R0*Chamber_Temperature/(4*pi*m_prop*Assigned_Tank_Radius^3);
+%     Calculated_Chamber_Pressure = 3*Molar_Mass*R0*Chamber_Temperature/(4*pi*m_prop*Assigned_Tank_Radius^3);
 %     Optimal_Prop_Mass(rowinc,1) = Calculated_Chamber_Pressure;
 %     Optimal_Prop_Mass(rowinc,2) = m_prop;
 %     rowinc = rowinc + 1;
