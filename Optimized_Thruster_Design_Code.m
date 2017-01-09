@@ -33,17 +33,21 @@ m = 0.019210; % Kg - Mass of Tank(Empty)
 Specific_Gas = R0/Molar_Mass; % J/molK -
 
 % Nozzle Geometry & Throat Conditions
-Exit_Radius = 0.025; % meters
+Exit_Radius = 0.01; % meters
 Exit_Area = pi()*(Exit_Radius)^2; % meters ^2
 Exit_Angle = 15*(pi/180); % Radians
 Throat_Radius = Exit_Radius/1.4; % m
 Throat_Area = pi()*Throat_Radius^2; % m^2 - Throat Area
+% Throat_Radius = 0.025;
+% Throat_Area = pi*(Throat_Radius)^2;
+% Exit_Radius = 1.4*Throat_Radius;
+% Exit_Area = pi*(Exit_Radius)^2;
 Throat_Mach = 1;
 Nozzle_Length = ((Exit_Radius-Throat_Radius)/(tan(Exit_Angle))); % meters
 
 % Pressure Conditions
-Chamber_Temperature = 273; % Kelvin - Chamber Temperature
-Chamber_Pressure = 970000; % Pascals - Chamber Pressure
+Chamber_Temperature = 150; % Kelvin - Chamber Temperature
+Chamber_Pressure = 1000; % Kilo-Pascals - Chamber Pressure
 Throat_Pressure = Chamber_Pressure*(2/(k+1))^(k/(k-1));
 
 % Calculations
@@ -103,21 +107,21 @@ Burn = (Propellant_Mass*System_Velocity)/Thrust_Force;
 
 % Calculated_Tank_Radius = Tank_Radius;
 % 
-rowinc = 1;
+% rowinc = 1;
 
-Assigned_Tank_Radius = 0.025;
-% Assigned_Propellant_Mass = 0.5; % kg
+% Assigned_Tank_Radius = 0.025;
+Assigned_Propellant_Mass = 0.3; % kg
 
-% for Chamber_Pressure = 700000:10000:7000000
-Tank_Radius = (3*Molar_Mass*R0*Chamber_Temperature/(4*pi()*Chamber_Pressure*Propellant_Mass))^(1/3);
+% for Chamber_Pressure = 10000000:100000:10000000000
+Tank_Radius = (3*Propellant_Mass*R0*Chamber_Temperature/(1000*4*pi()*Chamber_Pressure*Molar_Mass))^(1/3);
 %     Optimal_Tank_Radius(rowinc,1) = Tank_Radius;
 %     Optimal_Tank_Radius(rowinc,2) = Chamber_Pressure;
 %     rowinc = rowinc + 1;
 % end
-
-% plot(Optimal_Tank_Radius(1:201,1),Optimal_Tank_Radius(1:201,2))
-% xlabel('Tank Radius');
-% ylabel('Chamber Pressure')
+% % 
+% % plot(Optimal_Tank_Radius(1:99901,1),Optimal_Tank_Radius(1:99901,2))
+% % xlabel('Tank Radius');
+% % ylabel('Chamber Pressure')
 % Calculated_Tank_Radius = (3*Tank_Volume/(4*pi))^(1/3);
 
 % % Assigned_Prop_Mass = 0.01;
@@ -128,7 +132,14 @@ Tank_Radius = (3*Molar_Mass*R0*Chamber_Temperature/(4*pi()*Chamber_Pressure*Prop
 %     rowinc = rowinc + 1;
 % end
 
-
+Tank_Radius
+Mach
+Propellant_Mass
+Mass_Flow
+Nozzle_Length
+Exit_Velocity
+Isp
+Chamber_Pressure
 
 
 
